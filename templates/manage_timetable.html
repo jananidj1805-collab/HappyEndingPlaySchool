@@ -1,0 +1,135 @@
+{% load custom_tags %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Manage Timetable</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #74ebd5, #ACB6E5);
+            margin: 0;
+        }
+
+        .container {
+            width: 90%;
+            margin: 30px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .back-btn {
+            text-decoration: none;
+            background: #2196F3;
+            color: white;
+            padding: 10px 16px;
+            border-radius: 8px;
+        }
+
+        .back-btn:hover {
+            background: #1976d2;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background: #4CAF50;
+            color: white;
+            padding: 12px;
+        }
+
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+
+        input[type="text"] {
+            width: 95%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        .save-btn {
+            margin-top: 20px;
+            width: 100%;
+            padding: 12px;
+            border: none;
+            background: #4CAF50;
+            color: white;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .save-btn:hover {
+            background: #43a047;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="top-bar">
+        <a href="{% url 'teacher_dashboard' %}" class="back-btn">← Back</a>
+        <h2>{{ class_name }} Timetable Management</h2>
+        <div></div>
+    </div>
+
+    {% if messages %}
+        {% for message in messages %}
+            <script>alert("{{ message }}");</script>
+        {% endfor %}
+    {% endif %}
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <table>
+            <tr>
+                <th>Day</th>
+                {% for slot in time_slots %}
+                    <th>{{ slot }}</th>
+                {% endfor %}
+            </tr>
+
+            {% for day in days %}
+            <tr>
+                <td><b>{{ day }}</b></td>
+                {% for slot in time_slots %}
+                    <td>
+                        <input type="text"
+                               name="{{ day }}_{{ slot|cut:'.'|cut:'-' }}"
+                               value="{{ timetable_data|get_item:day|get_item:slot }}">
+                    </td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+
+        <button type="submit" class="save-btn">💾 Save Timetable</button>
+    </form>
+
+</div>
+
+</body>
+</html>

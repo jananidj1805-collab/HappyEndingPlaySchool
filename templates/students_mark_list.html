@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Select Student</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #74ebd5, #ACB6E5);
+            margin: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 40px auto;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0px 5px 20px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th {
+            background: #4CAF50;
+            color: white;
+            padding: 12px;
+        }
+
+        td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        tr:nth-child(even) {
+            background: #f2f2f2;
+        }
+
+        tr:hover {
+            background: #e6f7ff;
+        }
+
+        .btn {
+            padding: 8px 15px;
+            background: #4CAF50;
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+<div class="card">
+
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+    
+    <a href="{% url 'teacher_dashboard' %}" 
+       style="padding:10px 18px; background:#2196F3; color:white; text-decoration:none; border-radius:8px;">
+       ← Back
+    </a>
+
+    <h2 style="margin:0; flex:1; text-align:center;">📋 Select Student for Marks</h2>
+
+</div>
+
+<h2>📋 Select Student for Marks</h2>
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Class</th>
+        <th>Action</th>
+    </tr>
+
+    {% for student in students %}
+    <tr>
+        <td>{{ student.name }}</td>
+        <td>{{ student.student_class }}</td>
+        <td>
+            <a href="{% url 'add_marks' student.id %}" class="btn">➕ Add Marks</a>
+        </td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="3">No students found</td>
+    </tr>
+    {% endfor %}
+</table>
+
+</div>
+</div>
+
+</body>
+</html>

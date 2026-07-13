@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us</title>
+
+<style>
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to right, #f5f7fa, #c3cfe2);
+}
+
+/* BACK BUTTON */
+.back-btn{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: #1976d2;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.back-btn:hover{
+    background: #125ea7;
+}
+
+/* TITLE TOP */
+.main-title{
+    text-align:center; 
+    color:#8B0000;
+    margin-top: 20px;
+}
+
+/* CARD DESIGN */
+.about{
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 40px;
+    border-radius: 15px;
+    background: #ffffff;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    line-height: 1.8;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* TITLE */
+h2{
+    text-align: center;
+    color: #8B0000;
+    margin-bottom: 20px;
+    font-size: 32px;
+    position: relative;
+}
+
+h2::after{
+    content: "";
+    width: 80px;
+    height: 3px;
+    background: #8B0000;
+    display: block;
+    margin: 10px auto;
+    border-radius: 5px;
+}
+
+/* SUB TITLES */
+h3{
+    color: #333;
+    margin-top: 30px;
+    border-left: 5px solid #8B0000;
+    padding-left: 10px;
+}
+
+/* PARAGRAPH */
+p{
+    color: #555;
+    font-size: 15px;
+}
+
+/* LIST */
+ul{
+    padding-left: 20px;
+}
+
+ul li{
+    margin-bottom: 8px;
+    color: #444;
+}
+
+/* HIGHLIGHT TEXT */
+#demo{
+    text-align:center; 
+    font-weight:bold; 
+    margin-top:30px;
+    font-size: 18px;
+    color: #8B0000;
+}
+
+/* ANIMATION */
+@keyframes fadeIn{
+    from{
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* MOBILE */
+@media(max-width: 600px){
+    .about{
+        padding: 20px;
+        margin: 20px;
+    }
+    h2{
+        font-size: 24px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🔥 BACK BUTTON -->
+<a href="{% url 'home' %}" class="back-btn">← Back</a>
+
+<h1 class="main-title">
+    Happy Ending Play School
+</h1>
+
+<div class="about">
+
+<h2>About Us</h2>
+
+<p>
+Welcome to <b>Happy Ending Play School</b>, a joyful place where every child learns, plays, and grows with love and care. 
+We believe that early childhood is a magical time filled with curiosity and creativity. 
+Our safe and colourful classrooms, fun-filled activities, and caring teachers help children build confidence, make friends, and enjoy learning every day. 
+At <b>Happy Ending Play School</b>, every little step is a big celebration of happiness and growth.
+</p>
+
+<h3>Our Vision</h3>
+<p>
+To create a happy, safe, and inspiring environment where children learn with joy 
+and grow into confident, caring individuals.
+</p>
+
+<h3>Our Mission</h3>
+<p>
+Our mission is to nurture every child's curiosity through play-based learning, 
+creative activities, and personal attention, ensuring overall development.
+</p>
+
+<h3>Why Choose Us?</h3>
+<ul>
+<li>Safe and child-friendly environment</li>
+<li>Experienced and caring teachers</li>
+<li>Play-based and activity-oriented learning</li>
+<li>Focus on physical, mental, and social development</li>
+<li>Fun and colourful classrooms</li>
+</ul>
+
+<h3>Our Activities</h3>
+<p>
+We provide storytelling, drawing, colouring, music, dance, indoor games, outdoor play, 
+and creative activities that help children learn naturally while having fun.
+</p>
+
+<h3>Programs We Offer</h3>
+<ul>
+<li>Play Group</li>
+<li>Pre-KG</li>
+<li>KG</li>
+</ul>
+
+<p id="demo">
+At Happy Ending Play School, every little step is a big celebration of happiness and growth.
+</p>
+
+</div>
+
+</body>
+</html>

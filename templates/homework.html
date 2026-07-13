@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Homework</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #74ebd5, #ACB6E5);
+            margin: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 15px;
+            padding: 10px 18px;
+            background: #1976d2;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .back-btn:hover {
+            background: #125ea7;
+        }
+
+        .header {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: white;
+            padding: 18px;
+            margin-bottom: 15px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #222;
+        }
+
+        .desc {
+            margin: 10px 0;
+            color: #555;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .date {
+            font-size: 12px;
+            color: gray;
+        }
+
+        .badge {
+            background: #4CAF50;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 8px;
+            font-size: 12px;
+        }
+
+        .empty {
+            text-align: center;
+            background: #fff3cd;
+            padding: 25px;
+            border-radius: 10px;
+            color: #856404;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <a href="{% url 'student_dashboard' %}" class="back-btn">← Back</a>
+
+    <h2 class="header">📚 Homework</h2>
+
+    {% for h in homework %}
+        <div class="card">
+
+            <div class="title">
+                {{ h.title }}
+            </div>
+
+            <div class="desc">
+                {{ h.description }}
+            </div>
+
+            <div class="footer">
+                <span class="date">📅 {{ h.date }}</span>
+
+                <span class="badge">
+                    {{ h.student_class }}
+                </span>
+            </div>
+
+        </div>
+
+    {% empty %}
+
+        <div class="empty">
+            📭 No Homework Found
+        </div>
+
+    {% endfor %}
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Attendance</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #89f7fe, #66a6ff);
+            margin: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 15px;
+            padding: 10px 18px;
+            background: #1976d2;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .back-btn:hover {
+            background: #125ea7;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .card {
+            background: white;
+            padding: 15px;
+            margin-bottom: 12px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .date {
+            font-size: 16px;
+            color: #333;
+        }
+
+        .status {
+            padding: 6px 12px;
+            border-radius: 10px;
+            font-size: 14px;
+            color: white;
+        }
+
+        .Present {
+            background: #4CAF50;
+        }
+
+        .Absent {
+            background: #f44336;
+        }
+
+        .empty {
+            text-align: center;
+            background: #fff3cd;
+            padding: 25px;
+            border-radius: 10px;
+            color: #856404;
+        }
+
+        .summary {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+        }
+
+        .box h3 {
+            margin: 5px 0;
+            color: #333;
+        }
+
+        .box p {
+            margin: 0;
+            font-size: 14px;
+            color: gray;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <a href="{% url 'student_dashboard' %}" class="back-btn">← Back</a>
+
+    <h2 class="header">📅 Attendance</h2>
+
+    <div class="summary">
+        <div class="box">
+            <h3>{{ attendance|length }}</h3>
+            <p>Total Days</p>
+        </div>
+
+        <div class="box">
+            <h3>{{ present_count }}</h3>
+            <p>🟢Present</p>
+        </div>
+
+        <div class="box">
+            <h3>{{ absent_count }}</h3>
+            <p>🔴Absent</p>
+        </div>
+
+        <div class="box">
+            <h3>{{ percentage }}%</h3>
+            <p>Attendance %</p>
+        </div>
+    </div>
+
+    {% for a in attendance %}
+        <div class="card">
+            <div class="date">
+                📅 {{ a.date }}
+            </div>
+
+            <div class="status {{ a.status }}">
+                {{ a.status }}
+            </div>
+        </div>
+
+    {% empty %}
+
+        <div class="empty">
+            📭 No Attendance Found
+        </div>
+
+    {% endfor %}
+
+</div>
+
+</body>
+</html>

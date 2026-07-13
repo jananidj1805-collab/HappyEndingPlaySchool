@@ -1,0 +1,196 @@
+{% load static%}
+<!DOCTYPE html>
+<html>
+<head>
+<title>Happy Ending Play School</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<body>
+    {% if messages %}
+    {% for message in messages %}
+        <script>
+            alert("{{ message }}");
+        </script>
+    {% endfor %}
+{% endif %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="{% static 'js/script.js' %}" ></script>
+<nav class="navbar">
+    <h1>Happy Ending Play School</h1>
+    <div class="menu">
+        <a href="#home">🏠Home</a>
+        <a href="#gallery">🌌Gallery</a>
+        <a href="#form">📝Admission</a>
+        <a href="{% url 'careers' %}">💼 Careers</a>
+        <a href="{% url 'about' %}">🧑‍🧑‍🧒About Us</a>
+    </div>
+    <div id="txt"></div>
+</nav>
+
+<!-- HOME -->
+<div id="home" class="page">
+    <h2>Contact Us</h2>
+    <button id="btnInfo">Show Info</button>
+    <div id="msg">
+        Phone: 98765 43210 <br>
+        Location: Anna Nagar, Madurai <br>
+        Timings: 9AM - 12.30PM <br>
+        Email:happyendingplaysch@gmail.com
+    </div>
+</div>
+
+
+<!-- GALLERY -->
+<div id="gallery" class="page">
+    <h1>School Ambience</h1>
+
+    <div class="demo">
+        <img src="{% static 'img/12.jpg' %}">
+        <img src="{% static 'img/13.jpg' %}">
+        <img src="{% static 'img/14.jpg' %}">
+        <img src="{% static 'img/15.jpg' %}">
+        <img src="{% static 'img/16.jpg' %}">
+        <img src="{% static 'img/17.jpg' %}">
+    </div>
+
+    <p>
+        A school is not just a place for learning, but also a space where children grow, play,
+        and build strong values. The ambience of a school plays a vital role in shaping a child's
+        confidence and curiosity.
+    </p>
+
+    <div class="video-box">
+        <iframe
+            src="https://www.youtube.com/embed/nKVTzzr7EVo?rel=0"
+            title="School Video"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen>
+        </iframe>
+    </div>
+</div>
+<!-- FORM -->
+<div id="form" class="page">
+    <form method="POST" action="/" name="Regform" onsubmit="return validate()">
+    {% csrf_token %}
+
+    <h1>Admission Form</h1>
+
+    <label>Name</label>
+    <input type="text" name="name">
+
+    <label>DOB</label>
+    <input type="date" name="dob">
+
+    <label>Phone</label>
+    <input type="text" name="phone">
+
+    <label>Gender</label>
+    <div class="gender">
+        <label><input type="radio" name="gender" value="Male"> Male</label>
+        <label><input type="radio" name="gender" value="Female"> Female</label>
+    </div>
+
+    <label>Email</label>
+    <input type="email" name="email">
+
+    <label>Password</label>
+    <div class="password-box">
+        <input type="password" id="password" name="password">
+        <i class="fa-solid fa-eye" id="togglePassword"></i>
+    </div>
+
+    <label>Address</label>
+    <textarea name="address"></textarea>
+
+    <label>Religion</label>
+    <select name="religion">
+        <option value="Hindu">Hindu</option>
+        <option value="Muslim">Muslim</option>
+        <option value="Christian">Christian</option>
+    </select>
+    <label>Class:</label>
+    <select name="student_class" required>
+        <option value="PreKG">PreKG</option>
+        <option value="LKG">LKG</option>
+        <option value="UKG">UKG</option>
+    </select>
+    <br><br>
+
+    <button type="submit">Submit</button>
+</form>
+</div>
+
+<footer>
+    © 2026 Happy Ending Play School
+</footer>
+
+<script>
+// CONTACT TOGGLE
+$("#btnInfo").click(function(){
+    $("#msg").slideToggle();
+});
+
+// PASSWORD TOGGLE
+$("#togglePassword").click(function(){
+    let pass = $("#password");
+    let type = pass.attr("type") === "password" ? "text" : "password";
+    pass.attr("type", type);
+    $(this).toggleClass("fa-eye fa-eye-slash");
+});
+
+// FORM VALIDATION
+function validate(){
+    let name = document.forms.Regform.name.value;
+    let phone = document.forms.Regform.phone.value;
+    let email = document.forms.Regform.email.value;
+    let password = document.forms.Regform.password.value;
+    let address = document.forms.Regform.address.value;
+
+    let regName = /\d/;
+    let regPhone = /^\d{10}$/;
+
+    if(name === "" || regName.test(name)){
+        alert("Please enter valid name");
+        return false;
+    }
+    if(!regPhone.test(phone)){
+        alert("Enter valid 10 digit phone number");
+        return false;
+    }
+    if(email === ""){
+        alert("Enter email");
+        return false;
+    }
+    if(password.length < 6){
+        alert("Password must be at least 6 characters");
+        return false;
+    }
+    if(address === ""){
+        alert("Enter address");
+        return false;
+    }
+    return true;
+}
+
+// CLOCK
+function getTime(){
+    const d = new Date();
+    let h = d.getHours();
+    let m = d.getMinutes();
+    let s = d.getSeconds();
+    let ampm = h >= 12 ? "PM" : "AM";
+    h = h % 12 || 12;
+
+    document.getElementById("txt").innerHTML =
+        h + ":" + String(m).padStart(2,"0") + ":" + String(s).padStart(2,"0") + " " + ampm;
+
+    setTimeout(getTime, 1000);
+}
+getTime();
+</script>
+
+</body>
+</html>

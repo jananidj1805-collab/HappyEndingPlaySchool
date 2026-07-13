@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>LKG Timetable</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #74ebd5, #ACB6E5);
+        }
+
+        .card {
+            width: 80%;
+            margin: 40px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0px 5px 20px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 10px 18px;
+            background: #1976d2;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            float: left;
+        }
+
+        .back-btn:hover {
+            background: #125ea7;
+        }
+
+        h1 {
+            color: #333;
+            clear: both;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background: #2196F3;
+            color: white;
+            padding: 10px;
+        }
+
+        td {
+            padding: 10px;
+        }
+
+        tr:nth-child(even) {
+            background: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="card">
+
+<a href="{% url 'student_dashboard' %}" class="back-btn">← Back</a>
+
+<h1>🧒 LKG Time Table</h1>
+
+<table>
+<tr>
+    <th>Day</th>
+    <th>9.30-10</th>
+    <th>10-10.30</th>
+    <th>10.30-11</th>
+    <th>11-11.30</th>
+    <th>11.30-12</th>
+</tr>
+
+<tr>
+    <td>Mon</td>
+    <td>English</td>
+    <td>Reading</td>
+    <td>Break</td>
+    <td>Writing</td>
+    <td>Games</td>
+</tr>
+<tr>
+    <td>Tue</td>
+    <td>Maths</td>
+    <td>Counting</td>
+    <td>Break</td>
+    <td>Worksheet</td>
+    <td>Activity</td>
+</tr>
+<tr>
+    <td>Wed</td>
+    <td>EVS</td>
+    <td>Drawing</td>
+    <td>Break</td>
+    <td>Story</td>
+    <td>Games</td>
+</tr>
+<tr>
+    <td>Thu</td>
+    <td>Rhymes</td>
+    <td>Reading</td>
+    <td>Break</td>
+    <td>Coloring</td>
+    <td>Running</td>
+</tr>
+<tr>
+    <td>Fri</td>
+    <td>Revision</td>
+    <td>Test</td>
+    <td>Break</td>
+    <td>Fun</td>
+    <td>Play</td>
+</tr>
+
+</table>
+</div>
+
+</body>
+</html>
