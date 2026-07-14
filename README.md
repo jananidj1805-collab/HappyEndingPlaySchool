@@ -114,26 +114,33 @@ http://127.0.0.1:8000/
 
 ## 📷 Screenshots
 
-### Home Page
+### 🏠 Home Page
 
-(Add Home page Screenshot)
+![Home Page](screenshots/home.png)
 
+---
 
-### Gallery Page
+### 📸 Gallery
 
-(Add Gallery Screenshot)
+![Gallery](screenshots/gallery.png)
 
-### Student Dashboard
+---
 
-(Add Student Dashboard Screenshot)
+### 👨‍💼 Admin Dashboard
 
-### Teacher Dashboard
+![Admin Dashboard](screenshots/admin_dashboard.png)
 
-(Add Teacher Dashboard Screenshot)
+---
 
-### Admin Dashboard
+### 👩‍🏫 Teacher Dashboard
 
-(Add Admin Dashboard Screenshot)
+![Teacher Dashboard](screenshots/teacher_dashboard.png)
+
+---
+
+### 👨‍🎓 Student Dashboard
+
+![Student Dashboard](screenshots/student_dashboard.png)
 
 ---
 
