@@ -144,6 +144,32 @@ http://127.0.0.1:8000/
 
 ---
 
+## 📧 Email Notification
+
+### 🎉 Student Approved Mail
+
+![Student Approved](screenshots/student_approved_mail.png)
+
+### ❌ Student Rejected Mail
+
+![Student Rejected](screenshots/student_rejected_mail.png)
+
+### 👩‍🏫 Teacher Approved Mail
+
+![Teacher Approved](screenshots/teacher_approved_mail.png)
+
+### ❌ Teacher Rejected Mail
+
+![Teacher Rejected](screenshots/teacher_rejected_mail.png)
+
+### 📢 School Announcement Mail
+
+![Announcement](screenshots/announcement_mail.png)
+
+### 📩 Query Reply Mail
+
+![Query Reply](screenshots/query_reply_mail.png)
+
 ## 👨‍💻 Developer
 
 **janaki**
